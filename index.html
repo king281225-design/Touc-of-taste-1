@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Touch of Taste — Take Away | Indian • Chinese • Tandoor</title>
+<meta name="description" content="Touch of Taste Take Away — Indian, Chinese & Tandoor cuisine. Momos, starters, rolls, rice, noodles & more. Free home delivery above ₹200. Order on WhatsApp.">
+<meta name="keywords" content="Touch of Taste, Indian Chinese food, momos, takeaway, food delivery, Chinese food menu">
+<meta property="og:title" content="Touch of Taste — Take Away">
+<meta property="og:description" content="Indian • Chinese • Tandoor cuisine. Order now for pickup or free home delivery above ₹200.">
+<meta property="og:type" content="restaurant.menu">
+<meta name="twitter:card" content="summary">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#124b44">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Touch of Taste">
+<meta name="mobile-web-app-capable" content="yes">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Cinzel:wght@500;600;700&family=Poppins:wght@400;500;600;700&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..600,0..1,-25..200">
+<style>
+  :root{
+    --teal-950:#062E2B;
+    --teal-900:#0A4A45;
+    --teal-800:#0B6E69;
+    --teal-700:#047F7A;
+    --teal-600:#138A7E;
+    --teal-500:#17A08F;
+    --teal-glow:#3fc9b7;
+    --gold:#D4AF37;
+    --gold-soft:#E4C767;
+    --cream:#FAF6EE;
+    --cream-dim:#F0E9D8;
+    --ink:#1D1D1B;
+    --veg:#3f9d55;
+    --nonveg:#c4453a;
+    --card-bg:#0A4A45;
+    --card-bg-light:#FCFCFA;
+    --shadow-lg: 0 20px 45px -20px rgba(6,20,18,.55);
+    --radius-plaque: 26px;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --script: "Cormorant Garamond", Georgia, serif;
+    --cinzel: "Cinzel", serif;
+    --sans: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --price-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  [data-theme="light"]{
+    --bg-page: var(--cream);
+    --bg-section-alt: var(--cream-dim);
+    --text-main: var(--ink);
+    --text-sub: #5a5a57;
+    --card-surface: var(--card-bg-light);
+    --card-border: #D9D9D9;
+    --header-bg: rgba(250,246,238,.86);
+  }
+  [data-theme="dark"]{
+    --bg-page: var(--teal-950);
+    --bg-section-alt: #082C29;
+    --text-main: #FAF6EE;
+    --text-sub: #b9cfc9;
+    --card-surface: #0E403B;
+    --card-border: rgba(255,255,255,.08);
+    --header-bg: rgba(6,46,43,.86);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  .material-symbols-outlined{
+    font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24;
+    font-size:1.15em;line-height:1;display:inline-block;vertical-align:middle;
+  }
+  body{
+    margin:0;
+    background:var(--bg-page);
+    color:var(--text-main);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    transition:background .35s ease, color .35s ease;
+    padding-bottom:88px;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:760px;margin:0 auto;padding:0 18px;}
+
+  /* ---------- Loading screen ---------- */
+  #loader{
+    position:fixed;inset:0;background:var(--teal-950);z-index:999;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+    transition:opacity .5s ease, visibility .5s ease;
+  }
+  #loader.hide{opacity:0;visibility:hidden;}
+  .loader-mark{width:64px;height:64px;position:relative;}
+  .loader-mark svg{width:100%;height:100%;animation:spin 1.4s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  #loader p{font-family:var(--script);font-weight:700;letter-spacing:.01em;font-size:1.6rem;color:var(--gold-soft);margin:0;}
+
+  /* ---------- Header ---------- */
+  header.site-header{
+    position:sticky;top:0;z-index:60;
+    background:var(--header-bg);
+    backdrop-filter:blur(14px) saturate(140%);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);
+    border-bottom:1px solid var(--card-border);
+  }
+  .header-row{display:flex;align-items:center;gap:12px;padding:10px 0;}
+  .brand{display:flex;align-items:center;gap:10px;flex:1;min-width:0;}
+  .brand-badge{width:42px;height:42px;flex:none;border-radius:50%;background:linear-gradient(155deg,var(--teal-600),var(--teal-800));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.25);}
+  .brand-badge svg{width:24px;height:24px;}
+  .brand-text{min-width:0;}
+  .brand-text .name{font-family:var(--script);font-weight:800;letter-spacing:.005em;font-size:1.85rem;line-height:1;color:var(--text-main);white-space:nowrap;}
+  .brand-text .tag{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-sub);display:block;margin-top:2px;}
+  .header-actions{display:flex;align-items:center;gap:4px;}
+  .icon-btn{width:38px;height:38px;border-radius:12px;border:1px solid rgba(4,127,122,.28);background:rgba(4,127,122,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--teal-700);transition:background .15s,color .15s;}
+  .icon-btn:hover{background:var(--teal-700);color:#fff;}
+  .icon-btn svg{width:18px;height:18px;stroke:currentColor;}
+  .icon-btn-google{background:#fff;border-color:#e3e3e3;}
+  .icon-btn-google:hover{background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.18);}
+
+  /* ---------- Install banner ---------- */
+  .install-banner{
+    max-height:0;overflow:hidden;background:linear-gradient(120deg,var(--teal-700),var(--teal-800));
+    transition:max-height .4s ease;
+  }
+  .install-banner.show{max-height:90px;}
+  .install-inner{display:flex;align-items:center;gap:10px;padding:10px 18px;}
+  .install-icon{font-size:1.3rem;flex:none;}
+  .install-text{flex:1;min-width:0;display:flex;flex-direction:column;color:#eaf5f1;}
+  .install-text strong{font-size:.8rem;line-height:1.3;}
+  .install-text span{font-size:.7rem;color:#bcdad3;}
+  .install-cta{flex:none;background:var(--gold);color:#221a08;border:none;font-weight:800;font-size:.76rem;padding:8px 14px;border-radius:10px;cursor:pointer;}
+  .install-x{flex:none;background:none;border:none;color:#bcdad3;font-size:.9rem;cursor:pointer;padding:4px;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 15% 0%, rgba(63,201,183,.28), transparent 60%),
+      radial-gradient(100% 80% at 100% 10%, rgba(201,168,74,.18), transparent 55%),
+      linear-gradient(160deg, var(--teal-900), var(--teal-950) 70%);
+    padding:52px 0 46px;
+    color:#f3ede0;
+  }
+  .hero .container{position:relative;z-index:2;}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft);border:1px solid rgba(201,168,74,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;}
+  .hero h1{font-family:var(--script);font-weight:800;letter-spacing:.005em;font-size:3.6rem;line-height:.98;margin:0 0 6px;color:#fff;}
+  .hero h2{font-family:var(--serif);font-weight:500;font-style:italic;font-size:1.2rem;margin:0 0 16px;color:var(--gold-soft);}
+  .hero p.desc{max-width:38ch;color:#cfe4de;font-size:.95rem;line-height:1.55;margin:0 0 26px;}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:10px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:14px;
+    font-weight:700;font-size:.88rem;cursor:pointer;border:1px solid transparent;transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn:active{transform:scale(.97);}
+  .btn svg{width:16px;height:16px;}
+  .btn-primary{background:linear-gradient(135deg,var(--gold-soft),var(--gold));color:#22190a;box-shadow:0 10px 24px -8px rgba(201,168,74,.55);}
+  .btn-outline{border-color:rgba(255,255,255,.35);color:#fff;background:rgba(255,255,255,.06);}
+  .btn-whatsapp{background:#25D366;color:#06210f;}
+  .hero-plaque{
+    position:absolute;right:-60px;top:10px;width:260px;height:260px;opacity:.14;z-index:1;
+  }
+  .scroll-cue{margin-top:34px;display:flex;align-items:center;gap:8px;color:var(--gold-soft);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;}
+  .scroll-cue .arrow{animation:bob 1.6s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
+
+  /* ---------- Search ---------- */
+  .search-wrap{margin-top:-26px;position:relative;z-index:5;}
+  .search-box{
+    background:var(--card-surface);border:1px solid var(--card-border);border-radius:20px;
+    box-shadow:var(--shadow-lg);padding:6px 8px 6px 18px;display:flex;align-items:center;gap:10px;
+  }
+  .search-box svg{width:18px;height:18px;color:var(--text-sub);flex:none;}
+  .search-box input{
+    flex:1;border:none;outline:none;background:transparent;color:var(--text-main);font-family:var(--sans);font-size:.95rem;padding:12px 0;
+  }
+  .search-box input::placeholder{color:var(--text-sub);}
+  .search-clear{width:30px;height:30px;border-radius:50%;border:none;background:var(--bg-section-alt);color:var(--text-sub);display:none;align-items:center;justify-content:center;cursor:pointer;flex:none;}
+  .search-clear.show{display:flex;}
+  .search-meta{padding:10px 4px 0;font-size:.78rem;color:var(--text-sub);display:none;}
+  .search-meta.show{display:block;}
+
+  /* ---------- Filters row ---------- */
+  .filter-row{display:flex;gap:8px;padding:14px 0 4px;overflow-x:auto;scrollbar-width:none;}
+  .filter-row::-webkit-scrollbar{display:none;}
+  .chip{
+    flex:none;padding:8px 14px;border-radius:999px;border:1px solid var(--card-border);background:var(--card-surface);
+    font-size:.78rem;font-weight:600;color:var(--text-sub);cursor:pointer;white-space:nowrap;display:flex;gap:6px;align-items:center;
+  }
+  .chip.active{background:var(--teal-600);color:#fff;border-color:var(--teal-600);}
+
+  /* ---------- Category nav ---------- */
+  .cat-nav-outer{position:sticky;top:63px;z-index:50;background:var(--bg-page);border-bottom:1px solid var(--card-border);}
+  .cat-nav{display:flex;gap:10px;overflow-x:auto;padding:12px 18px;scrollbar-width:none;}
+  .cat-nav::-webkit-scrollbar{display:none;}
+  .cat-chip{
+    flex:none;display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 14px;border-radius:16px;
+    background:var(--card-surface);border:1px solid var(--card-border);cursor:pointer;min-width:64px;
+  }
+  .cat-chip .icon{font-size:1.35rem;color:var(--teal-500);}
+  .cat-chip span.lbl{font-family:var(--cinzel);font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-sub);white-space:nowrap;}
+  .cat-chip.active{background:var(--teal-700);border-color:var(--teal-700);}
+  .cat-chip.active span.lbl{color:#fff;}
+  .cat-chip.active .icon{color:#fff;}
+
+  /* ---------- Section headers ---------- */
+  .section{padding:36px 0 6px;}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px;gap:10px;}
+  .section-head h3{font-family:var(--serif);font-weight:600;font-size:1.5rem;margin:0;display:flex;align-items:center;gap:10px;}
+  .section-head .count{font-size:.72rem;color:var(--text-sub);font-weight:600;}
+  .plaque-tag{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    background:var(--teal-700);color:#fff;font-family:var(--cinzel);font-style:normal;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+    padding:5px 16px;border-radius:14px 14px 4px 4px / 10px 10px 4px 4px;font-size:.85rem;
+  }
+  .plaque-tag .icon{font-size:1.1rem;color:var(--gold-soft);}
+
+  /* ---------- Dish grid & card ---------- */
+  .dish-grid{display:grid;grid-template-columns:1fr;gap:12px;}
+  .veg-group-label{display:flex;align-items:center;gap:8px;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--text-sub);margin:18px 0 10px;}
+  .veg-group-label .dot{width:14px;height:14px;border:2px solid var(--veg);border-radius:3px;position:relative;flex:none;}
+  .veg-group-label .dot::after{content:"";position:absolute;inset:3px;background:var(--veg);border-radius:50%;}
+  .veg-group-label.non .dot{border-color:var(--nonveg);}
+  .veg-group-label.non .dot::after{background:var(--nonveg);border-radius:50%;}
+
+  .dish-card{
+    display:flex;align-items:center;gap:12px;background:var(--card-surface);border:1px solid var(--card-border);
+    border-radius:18px;padding:12px;box-shadow:0 8px 20px -14px rgba(0,0,0,.3);transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .dish-card:hover{transform:translateY(-2px);box-shadow:0 14px 28px -14px rgba(0,0,0,.4);}
+  .dish-thumb{
+    width:56px;height:56px;border-radius:14px;flex:none;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#eafff9;
+    background:linear-gradient(155deg,var(--teal-600),var(--teal-800));position:relative;
+  }
+  .dish-thumb .icon{font-size:1.55rem;}
+  .dish-thumb.veg-border{box-shadow:inset 0 0 0 2px var(--veg);}
+  .dish-thumb.nonveg-border{box-shadow:inset 0 0 0 2px var(--nonveg);}
+  .dish-info{flex:1;min-width:0;}
+  .dish-info .top-line{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .dish-name{font-family:var(--sans);font-weight:500;font-size:.92rem;line-height:1.3;}
+  .veg-dot{width:11px;height:11px;border:1.5px solid var(--veg);border-radius:2px;position:relative;flex:none;}
+  .veg-dot::after{content:"";position:absolute;inset:2px;background:var(--veg);border-radius:50%;}
+  .nonveg-dot{width:11px;height:11px;border:1.5px solid var(--nonveg);border-radius:2px;position:relative;flex:none;}
+  .nonveg-dot::after{content:"";position:absolute;inset:2px;background:var(--nonveg);border-radius:50%;}
+  .badge{font-size:.6rem;font-weight:800;padding:3px 8px;border-radius:999px;letter-spacing:.03em;border:1px solid transparent;}
+  .badge.bestseller{background:linear-gradient(120deg,rgba(201,168,74,.22),rgba(201,168,74,.1));color:var(--gold);border-color:rgba(201,168,74,.35);}
+  .badge.spicy{background:rgba(196,69,58,.14);color:var(--nonveg);border-color:rgba(196,69,58,.25);}
+  .badge.chef{background:linear-gradient(120deg,rgba(34,165,149,.2),rgba(34,165,149,.08));color:var(--teal-500);border-color:rgba(34,165,149,.3);}
+  .badge.new{background:rgba(63,201,183,.16);color:var(--teal-glow);border-color:rgba(63,201,183,.3);}
+  .dish-price{font-family:var(--price-font);font-weight:600;font-size:1rem;color:var(--teal-500);white-space:nowrap;margin-left:auto;padding-left:8px;}
+  .dish-price.dual{display:flex;flex-direction:column;align-items:flex-end;gap:2px;font-size:.86rem;}
+  .dish-price.dual .price-row{display:flex;align-items:baseline;gap:6px;white-space:nowrap;}
+  .dish-price.dual .price-label{font-family:var(--price-font);font-weight:600;font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;color:var(--text-sub);min-width:34px;text-align:right;}
+  .dish-price.dual .price-val{font-family:var(--price-font);font-weight:700;color:var(--teal-500);min-width:44px;text-align:right;}
+  .no-result{display:none;text-align:center;padding:50px 20px;color:var(--text-sub);}
+  .no-result.show{display:block;}
+  .no-result .emoji{font-size:2.2rem;margin-bottom:10px;}
+
+  /* ---------- Best sellers rail ---------- */
+  .bs-rail{display:flex;gap:12px;overflow-x:auto;padding:4px 0 10px;scrollbar-width:none;}
+  .bs-rail::-webkit-scrollbar{display:none;}
+  .bs-card{
+    flex:none;width:172px;background:var(--card-surface);border:1px solid var(--card-border);border-radius:18px;overflow:hidden;
+    box-shadow:0 10px 22px -14px rgba(0,0,0,.35);
+  }
+  .bs-card:not(.has-photo){padding:14px;}
+  .bs-card .bs-body{padding:12px 14px 14px;}
+  .bs-photo-wrap{position:relative;}
+  .bs-card .bs-photo{width:100%;height:132px;object-fit:cover;display:block;background:var(--cream-dim);}
+  .bs-card .bs-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(155deg,var(--gold-soft),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:10px;color:#221a08;}
+  .bs-card .bs-name{font-weight:700;font-size:.82rem;line-height:1.25;margin-bottom:4px;}
+  .bs-card .bs-price{color:var(--teal-500);font-family:var(--price-font);font-weight:700;font-size:.85rem;}
+  .fire-tag{display:inline-flex;align-items:center;gap:3px;font-size:.6rem;font-weight:800;color:var(--nonveg);margin-bottom:6px;}
+  .fire-tag.onphoto{position:absolute;top:8px;left:8px;margin:0;background:rgba(20,10,5,.72);color:#fff;padding:4px 9px;border-radius:999px;}
+
+  /* ---------- Combos ---------- */
+  .combo-scroller{display:flex;gap:14px;overflow-x:auto;padding:4px 0 12px;scrollbar-width:none;}
+  .combo-scroller::-webkit-scrollbar{display:none;}
+  .combo-card{
+    flex:none;width:260px;border-radius:22px;padding:20px;position:relative;overflow:hidden;color:#fff;
+    background:linear-gradient(155deg,var(--teal-700),var(--teal-950));box-shadow:var(--shadow-lg);
+  }
+  .combo-card::after{content:"";position:absolute;right:-30px;bottom:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(201,168,74,.35),transparent 70%);}
+  .combo-badge{display:inline-block;background:var(--gold);color:#221a08;font-size:.62rem;font-weight:800;padding:3px 10px;border-radius:999px;margin-bottom:10px;}
+  .combo-card h4{font-family:var(--serif);font-size:1.15rem;margin:0 0 10px;}
+  .combo-items{list-style:none;margin:0 0 14px;padding:0;font-size:.8rem;color:#cfe4de;}
+  .combo-items li{padding:3px 0;border-bottom:1px dashed rgba(255,255,255,.12);}
+  .combo-price-row{display:flex;align-items:baseline;gap:8px;}
+  .combo-price{font-family:var(--price-font);font-size:1.4rem;font-weight:700;color:var(--gold-soft);}
+  .combo-save{font-size:.7rem;color:#9fd8cd;}
+
+  /* ---------- Offer banner ---------- */
+  .offer-banner{
+    margin:36px 0 0;background:linear-gradient(120deg,var(--gold),var(--gold-soft));border-radius:20px;
+    padding:16px 18px;display:flex;align-items:center;gap:12px;overflow:hidden;position:relative;color:#25200a;
+  }
+  .offer-track{display:flex;gap:34px;animation:marquee 14s linear infinite;white-space:nowrap;font-weight:700;font-size:.85rem;}
+  @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+  /* ---------- Floating action buttons ---------- */
+  .fab-stack{position:fixed;right:16px;bottom:20px;z-index:70;display:flex;flex-direction:column;gap:10px;align-items:flex-end;}
+  .fab{
+    width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 22px -8px rgba(0,0,0,.4);
+    cursor:pointer;border:none;color:#fff;
+  }
+  .fab svg{width:24px;height:24px;}
+  .fab.whatsapp{background:#25D366;}
+  .fab.call{background:var(--teal-600);}
+  .fab.map{background:var(--gold);color:#221a08;}
+  .fab-main{width:58px;height:58px;background:linear-gradient(135deg,var(--teal-500),var(--teal-800));}
+  .fab-menu{display:flex;flex-direction:column;gap:10px;align-items:flex-end;opacity:0;pointer-events:none;transform:translateY(10px);transition:.25s ease;}
+  .fab-menu.open{opacity:1;pointer-events:auto;transform:translateY(0);}
+
+  /* ---------- Back to top ---------- */
+  .back-top{position:fixed;left:16px;bottom:20px;z-index:70;width:44px;height:44px;border-radius:50%;background:var(--card-surface);border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:.3s ease;}
+  .back-top.show{opacity:1;pointer-events:auto;}
+  .back-top svg{width:18px;height:18px;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--teal-950);color:#dfeeea;margin-top:50px;padding:44px 0 30px;}
+  .footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+  .footer-brand .name{font-family:var(--script);font-weight:700;letter-spacing:.01em;font-size:2rem;color:#fff;}
+  footer .addr{font-size:.85rem;color:#a9c4bd;line-height:1.7;margin-bottom:18px;}
+  .footer-links{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;}
+  .footer-links a{font-size:.78rem;font-weight:700;background:rgba(255,255,255,.06);padding:8px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.1);}
+  footer .fine{font-size:.72rem;color:#7fa199;border-top:1px solid rgba(255,255,255,.08);padding-top:16px;}
+
+  /* ---------- Welcome popup ---------- */
+  .popup-overlay{position:fixed;inset:0;background:rgba(6,20,18,.6);z-index:90;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(2px);}
+  .popup-overlay.show{display:flex;}
+  .popup-card{
+    background:var(--card-surface);width:100%;max-width:420px;border-radius:24px 24px 0 0;padding:26px 22px 30px;
+    animation:slideup .35s ease;position:relative;
+  }
+  @media(min-width:480px){.popup-overlay{align-items:center;}.popup-card{border-radius:24px;}}
+  @keyframes slideup{from{transform:translateY(40px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+  .popup-close{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;background:var(--bg-section-alt);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+  .popup-eyebrow{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-500);font-weight:800;margin-bottom:8px;}
+  .popup-card h3{font-family:var(--serif);font-size:1.4rem;margin:0 0 8px;}
+  .popup-card p{font-size:.88rem;color:var(--text-sub);line-height:1.5;margin:0 0 18px;}
+
+  @media (min-width:640px){
+    .hero h1{font-size:4.2rem;}
+    .dish-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;}
+  }
+</style>
+</head>
+<body data-theme="dark">
+
+<!-- Loading screen -->
+<div id="loader">
+  <div class="loader-mark">
+    <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="26" stroke="#3fc9b7" stroke-width="4" stroke-dasharray="120" stroke-dashoffset="40" stroke-linecap="round"/></svg>
+  </div>
+  <p>Touch of Taste</p>
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container header-row">
+    <div class="brand">
+      <div class="brand-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M6 9c0-3 2-5 2-5s-1 3 1 4c1-2 3-3 3-3s-.5 2 .5 3c1.5-.5 2.5-2 2.5-2s0 2.5-1.5 4c1 .5 1.5 1.5 1.5 3H6c0-1.5.6-2.7 1.6-3.3C6.6 9.4 6 8.3 6 7Z"/><path d="M6 12h12v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7Z"/></svg>
+      </div>
+      <div class="brand-text">
+        <span class="name">Touch of Taste</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" id="searchJump" aria-label="Search menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <a class="icon-btn" href="https://www.instagram.com/touch_of_taste1/" target="_blank" rel="noopener" aria-label="Instagram @touch_of_taste1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+      </a>
+      <a class="icon-btn icon-btn-google" href="https://maps.app.goo.gl/aD25Fq9SnAvovEsdA" target="_blank" rel="noopener" aria-label="Rate us on Google">
+        <svg viewBox="0 0 48 48" width="20" height="20"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.6 32.9 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.6 15.9 18.9 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4c-7.6 0-14.1 4.3-17.7 10.7z"/><path fill="#4CAF50" d="M24 44c5.5 0 10.4-1.9 14.3-5.1l-6.6-5.6C29.6 34.9 26.9 36 24 36c-5.2 0-9.6-3.1-11.3-7.6l-6.6 5.1C9.8 39.6 16.4 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.2 5.6l6.6 5.6C41.4 36.3 44 30.6 44 24c0-1.3-.1-2.7-.4-3.5z"/></svg>
+      </a>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36A5.4 5.4 0 0 1 12 3Z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Add to Home Screen banner -->
+<div class="install-banner" id="installBanner">
+  <div class="container install-inner">
+    <div class="install-icon">📲</div>
+    <div class="install-text">
+      <strong>Save this menu — skip the QR next time</strong>
+      <span id="installSubtext">Add it to your home screen and open it like an app.</span>
+    </div>
+    <button class="install-cta" id="installCta">Add</button>
+    <button class="install-x" id="installDismiss" aria-label="Dismiss">✕</button>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <svg class="hero-plaque" viewBox="0 0 200 200" fill="none"><path d="M100 8c14 0 24 10 24 22 0 6-2 10-2 10h6a30 30 0 0 1 30 30v90a10 10 0 0 1-10 10H52a10 10 0 0 1-10-10V70a30 30 0 0 1 30-30h6s-2-4-2-10c0-12 10-22 24-22Z" stroke="#3fc9b7" stroke-width="2"/></svg>
+  <div class="container">
+    <span class="hero-eyebrow">Fresh · Hot · Delivered</span>
+    <h1>Touch of Taste</h1>
+    <h2>Where Premium Flavours Meet Exceptional Quality</h2>
+    <p class="desc">Enjoy Handcrafted Momos, Signature Chinese Delicacies, Crispy Starters, Gourmet Rolls, Wok-Tossed Noodles &amp; Rice — freshly prepared to order. FREE Home Delivery on Orders Above ₹200.</p>
+    <div class="hero-actions">
+      <a class="btn btn-whatsapp" href="https://wa.me/919810301182?text=Hi%20Touch%20of%20Taste%2C%20I%27d%20like%20to%20order" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.6-1.4-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.2-1 1-1 2.3s1 2.7 1.2 2.9c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.5-.3Z"/></svg>
+        Order on WhatsApp
+      </a>
+      <a class="btn btn-primary" href="tel:9212157779">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.5 2.1L8 10.1a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c1 .4 2 .6 3 .7a2 2 0 0 1 1.6 2Z"/></svg>
+        Call Now
+      </a>
+      <a class="btn btn-outline" href="https://www.google.com/maps/dir/?api=1&destination=28.6249771,77.0967709" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Directions
+      </a>
+    </div>
+    <div class="scroll-cue"><span class="arrow">↓</span> Explore the menu</div>
+  </div>
+</section>
+
+<!-- Search -->
+<div class="container search-wrap">
+  <div class="search-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    <input type="text" id="searchInput" placeholder="Search dishes — momos, rice, roll, chicken…">
+    <button class="search-clear" id="searchClear" aria-label="Clear search">✕</button>
+  </div>
+  <p class="search-meta" id="searchMeta"></p>
+  <div class="filter-row">
+    <div class="chip active" data-diet="all">All</div>
+    <div class="chip" data-diet="veg"><span class="veg-dot"></span> Veg</div>
+    <div class="chip" data-diet="nonveg"><span class="nonveg-dot"></span> Non-Veg</div>
+    <div class="chip" data-diet="bestseller">🔥 Best Seller</div>
+  </div>
+</div>
+
+<!-- Category nav -->
+<div class="cat-nav-outer">
+  <div class="cat-nav" id="catNav"></div>
+</div>
+
+<div class="container">
+
+  <!-- Best sellers -->
+  <section class="section" id="bestsellers">
+    <div class="section-head"><h3>⭐ Best Sellers</h3></div>
+    <div class="bs-rail" id="bsRail"></div>
+  </section>
+
+  <!-- Combos -->
+  <section class="section" id="combos">
+    <div class="section-head"><h3>🔥 Combo Deals</h3><span class="count">Save more, together</span></div>
+    <div class="combo-scroller" id="comboRail"></div>
+  </section>
+
+  <!-- Offer banner -->
+  <div class="offer-banner">
+    <div class="offer-track">
+      <span>🎂 Birthday Parties</span>
+      <span>💍 Weddings</span>
+      <span>🏢 Corporate Events</span>
+      <span>🏠 House Parties</span>
+      <span>🍽️ Catering Services</span>
+      <span>🎉 Event Management</span>
+      <span>🎂 Birthday Parties</span>
+      <span>💍 Weddings</span>
+      <span>🏢 Corporate Events</span>
+      <span>🏠 House Parties</span>
+      <span>🍽️ Catering Services</span>
+      <span>🎉 Event Management</span>
+    </div>
+  </div>
+
+  <!-- Menu sections render here -->
+  <div id="menuSections"></div>
+
+  <!-- No results -->
+  <div class="no-result" id="noResult">
+    <div class="emoji">🍽️</div>
+    <p>No dishes match your search.<br>Try “momos”, “roll”, or “chicken”.</p>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-brand">
+      <div class="brand-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M6 9c0-3 2-5 2-5s-1 3 1 4c1-2 3-3 3-3s-.5 2 .5 3c1.5-.5 2.5-2 2.5-2s0 2.5-1.5 4c1 .5 1.5 1.5 1.5 3H6c0-1.5.6-2.7 1.6-3.3C6.6 9.4 6 8.3 6 7Z"/><path d="M6 12h12v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7Z"/></svg>
+      </div>
+      <span class="name">Touch of Taste</span>
+    </div>
+    <p class="addr">
+      🍽️ Authentic Indian • Chinese • Tandoor Cuisine<br>
+      ✨ Freshly Crafted with Premium Ingredients | Take Away • FREE Home Delivery • Luxury Catering Services<br>
+      🎉 Weddings • Birthday Celebrations • Corporate Events • Kitty Parties • House Parties<br>
+      📍 Street No. 6, Near Chill Point, Block VB, Virender Nagar, New Delhi – 110058<br>
+      📞 +91 92121 57779 | 📱 +91 98103 01182<br>
+      🚚 FREE Home Delivery on Orders Above ₹200 | Fresh Food • Great Taste • Memorable Experiences
+    </p>
+    <div class="footer-links">
+      <a href="https://wa.me/919810301182" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="tel:9212157779">Call</a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=28.6249771,77.0967709" target="_blank" rel="noopener">Google Maps</a>
+      <a href="https://www.instagram.com/touch_of_taste1/" target="_blank" rel="noopener">@touch_of_taste1</a>
+      <a href="https://link.zomato.com/xqzv/rshare?id=6158270630563407&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener">Zomato</a>
+      <a href="#" target="_blank" rel="noopener">Swiggy</a>
+    </div>
+    <p class="fine">© <span id="year"></span> Touch of Taste Take Away. All rights reserved. · Menu digitised for QR ordering.</p>
+  </div>
+</footer>
+
+<!-- Floating buttons -->
+<button class="back-top" id="backTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
+<div class="fab-stack">
+  <div class="fab-menu" id="fabMenu">
+    <a class="fab map" href="https://www.google.com/maps/dir/?api=1&destination=28.6249771,77.0967709" target="_blank" rel="noopener" aria-label="Map">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+    </a>
+    <a class="fab call" href="tel:9212157779" aria-label="Call">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.5 2.1L8 10.1a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c1 .4 2 .6 3 .7a2 2 0 0 1 1.6 2Z"/></svg>
+    </a>
+    <a class="fab whatsapp" href="https://wa.me/919810301182?text=Hi%20Touch%20of%20Taste%2C%20I%27d%20like%20to%20order" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.6-1.4-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.2-1 1-1 2.3s1 2.7 1.2 2.9c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.5-.3Z"/></svg>
+    </a>
+  </div>
+  <button class="fab fab-main" id="fabToggle" aria-label="Quick actions">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+  </button>
+</div>
+
+<!-- Welcome popup -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup-card">
+    <button class="popup-close" id="popupClose">✕</button>
+    <span class="popup-eyebrow">Today's Offer</span>
+    <h3>Free delivery above ₹200 🚚</h3>
+    <p>Browse the full menu below, or jump straight to our combo deals for the best value. Order in one tap on WhatsApp.</p>
+    <a class="btn btn-primary" href="#combos" id="popupCta" style="width:100%;justify-content:center;">See Combo Deals</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ---------------- DATA ----------------
+  const CATS = [
+    {id:'momos', label:'Momos', icon:'ramen_dining'},
+    {id:'starters', label:'Starters', icon:'local_fire_department'},
+    {id:'fish', label:'Fish', icon:'set_meal'},
+    {id:'soup', label:'Soup', icon:'soup_kitchen'},
+    {id:'fried', label:'Fried & Crunchy', icon:'fastfood'},
+    {id:'burger', label:'Burger', icon:'lunch_dining'},
+    {id:'rice', label:'Golden Rice', icon:'rice_bowl'},
+    {id:'noodles', label:'Noodles', icon:'ramen_dining'},
+    {id:'gravy', label:'Chinese Gravy', icon:'dinner_dining'},
+    {id:'chopsuey', label:'Chopsuey', icon:'takeout_dining'},
+    {id:'rolls', label:'Rolls', icon:'kebab_dining'},
+  ];
+
+  const D = (name, price, diet, opts) => Object.assign({name, price, diet}, opts||{});
+  const D2 = (name, price1, price2, diet, opts, labels) => Object.assign({name, price1, price2, labels: labels || ['Half','Full'], diet}, opts||{});
+
+  const MENU = {
+    momos: {
+      veg: [
+        D2('Veg Momos',80,90,'veg',{},['Steam','Fried']),
+        D2('Paneer Momos',90,100,'veg',{},['Steam','Fried']),
+        D('Paneer Crispy Momos',130,'veg'),
+        D('Chilli Garlic Paneer Momos',150,'veg'),
+        D('Paneer Malai Momos',100,'veg'),
+        D('Pan Fried Paneer Momos',140,'veg')
+      ],
+      nonveg: [
+        D2('Chicken Momos',90,100,'nonveg',{bestseller:true},['Steam','Fried']),
+        D('Chicken Crispy Momos',130,'nonveg',{bestseller:true}),
+        D('Chicken Garlic Momos',150,'nonveg'),
+        D('Chicken Malai Momos',150,'nonveg')
+      ]
+    },
+    starters: {
+      veg: [
+        D2('Chilli Potato',70,130,'veg'),
+        D2('Honey Chilli Potato',70,140,'veg'),
+        D('Chilly Garlic Gobhi (Seasonal)',170,'veg'),
+        D2('Veg Manchurian Dry',100,180,'veg'),
+        D2('Chilli Garlic Soya Chaap',100,180,'veg'),
+        D2('Creamy Soya Chaap',100,180,'veg'),
+        D2('Paneer Manchurian Dry',130,240,'veg'),
+        D2('Chilli Paneer Dry',130,240,'veg'),
+        D2('Lemon Garlic Chilli Paneer',130,240,'veg'),
+        D('Corn Salt & Pepper',240,'veg'),
+        D2('Lemon Garlic Chaap',100,180,'veg')
+      ],
+      nonveg: [
+        D2('Chilli Garlic Chicken Kabab',150,250,'nonveg'),
+        D2('Chilli Chicken Dry',150,250,'nonveg',{bestseller:true,spicy:true}),
+        D2('Lemon Chicken Dry',160,260,'nonveg'),
+        D2('Chicken Manchurian Dry',150,250,'nonveg'),
+        D2('Chicken Black Pepper',160,260,'nonveg'),
+        D2('Chicken Salt & Pepper',160,260,'nonveg'),
+        D('Chicken Hong-Kong Dry',250,'nonveg'),
+        D2('Chicken Hot Garlic',160,260,'nonveg',{spicy:true}),
+        D2('Crispy Honey Chicken',160,260,'nonveg'),
+        D2('Creamy Chicken Dry',160,260,'nonveg'),
+        D('Chef Spl. Chicken',250,'nonveg',{chef:true}),
+        D2('Ginger Garlic Chicken',160,260,'nonveg'),
+        D('Steam Chicken (GYM Spl.)',300,'nonveg')
+      ]
+    },
+    fish: {
+      nonveg: [D('Fish Finger with Hot Garlic Sauce',430,'nonveg'), D('Fish Amritsari with Mint Sauce',430,'nonveg'), D('Fish Chilli Garlic',430,'nonveg',{spicy:true}), D('Fish Lemon Garlic Chilli',430,'nonveg'), D("Fish Orley with Tarter Sauce",450,'nonveg')]
+    },
+    soup: {
+      veg: [D('Veg. Sweet Corn Soup',100,'veg'), D('Veg. Hot & Sour Soup',100,'veg'), D('Veg. Manchow Soup',100,'veg'), D('Veg. Talumein Soup',100,'veg'), D('Cream of Veg. Soup',100,'veg')],
+      nonveg: [D('Chicken Sweet Corn Soup',120,'nonveg'), D('Chicken Hot & Sour Soup',120,'nonveg'), D('Chicken Talumein Soup',120,'nonveg'), D('Chicken Manchow Soup',120,'nonveg'), D('Chicken Lemon Coriander Soup',120,'nonveg'), D('Chicken Thukpa Soup',120,'nonveg'), D('Cream of Chicken Soup',120,'nonveg')]
+    },
+    fried: {
+      veg: [
+        D2('Veg Spring Roll',50,100,'veg'),
+        D2('French Fries',50,90,'veg'),
+        D2('Crispy Soya Chaap',100,180,'veg'),
+        D2('Crispy Paneer Bite with Thousand Island Sauce',130,240,'veg'),
+        D('Crispy Kebab with Hot Garlic Sauce',220,'veg')
+      ],
+      nonveg: [
+        D('Chicken Seek Kebab with Mint Sauce + Onion',150,'nonveg'),
+        D2('CFC Crispy Chicken (Hot Garlic & Thousand Island Sauce)',170,270,'nonveg',{bestseller:true}),
+        D2('Spicy Chicken Fingers',170,270,'nonveg',{spicy:true})
+      ]
+    },
+    burger: {
+      veg: [D('Veg Burger',60,'veg'), D('Crispy Paneer Burger',90,'veg')],
+      nonveg: [D('Chicken Burger',100,'nonveg'), D('Loaded Chicken Burger',100,'nonveg'), D('CFC Chicken Burger',100,'nonveg',{bestseller:true})]
+    },
+    rice: {
+      veg: [
+        D('Steam Rice',90,'veg'),
+        D2('Veg Fried Rice',60,100,'veg'),
+        D2('Chilli Garlic Fried Rice',70,110,'veg'),
+        D2('Singapore Fried Rice',90,150,'veg'),
+        D2('Paneer Fried Rice',90,150,'veg'),
+        D('Butter Jeera Rice',120,'veg')
+      ],
+      nonveg: [
+        D2('Egg Fried Rice',90,140,'nonveg'),
+        D2('Chicken Fried Rice',100,160,'nonveg',{bestseller:true}),
+        D2('Chicken Singapore Fried Rice',100,160,'nonveg'),
+        D2('Chilli Chicken Garlic Fried Rice',100,160,'nonveg'),
+        D2('Chicken Egg Fried Rice',120,200,'nonveg')
+      ]
+    },
+    noodles: {
+      veg: [
+        D2('Veg Noodles',50,90,'veg'),
+        D2('Singapore Noodles',90,140,'veg'),
+        D2('Chilli Garlic Noodles',60,100,'veg'),
+        D2('Veg Hakka Noodles',90,140,'veg'),
+        D2('Veg Paneer Noodles',100,150,'veg')
+      ],
+      nonveg: [
+        D2('Chicken Egg Noodles',90,140,'nonveg'),
+        D2('Chicken Noodles',100,150,'nonveg',{bestseller:true}),
+        D2('Chicken Singapore Noodles',110,160,'nonveg'),
+        D2('Garlic Chicken Noodles',110,160,'nonveg'),
+        D2('Chicken Hakka Noodles',110,160,'nonveg'),
+        D2('Chicken Garlic Egg Noodles',110,190,'nonveg')
+      ]
+    },
+    gravy: {
+      veg: [
+        D2('Chilli Chaap Gravy',100,180,'veg'),
+        D('Mix Veg. Hot Garlic Sauce',180,'veg'),
+        D2('Veg Manchurian Gravy',100,170,'veg'),
+        D2('Chilli Paneer',130,230,'veg'),
+        D2('Paneer Manchurian',130,230,'veg')
+      ],
+      nonveg: [
+        D2('Chilli Chicken Gravy',150,250,'nonveg',{bestseller:true,spicy:true}),
+        D2('Chicken Manchurian Gravy',150,250,'nonveg'),
+        D2('Chicken Hot Garlic Gravy',150,250,'nonveg'),
+        D2('Chicken Black Pepper Gravy',150,250,'nonveg'),
+        D2('Ginger Garlic Chicken Gravy',150,250,'nonveg')
+      ]
+    },
+    chopsuey: {
+      veg: [D('Veg. Chopsuey with Crispy Noodles',250,'veg'), D('Paneer Veg. Chopsuey',270,'veg')],
+      nonveg: [D('Chicken Chopsuey',290,'nonveg',{chef:true})]
+    },
+    rolls: {
+      veg: [
+        D('Veg Roll',140,'veg'),
+        D('Chilli Chaap Roll',140,'veg'),
+        D('Chilli Paneer Roll',140,'veg'),
+        D('Veg. Manchurian Roll',140,'veg'),
+        D('Crispy CFC Paneer Roll',150,'veg',{new:true}),
+        D('Classic Paneer Roll',150,'veg',{new:true}),
+        D('Veg Combo Roll',150,'veg')
+      ],
+      nonveg: [D('Egg Roll Masala',110,'nonveg'), D('Chicken Manchurian Roll',150,'nonveg'), D('Chilli Chicken Roll',150,'nonveg'), D("Chicken Hot 'N' Spicy Roll",150,'nonveg'), D('Chicken Seek Kebab Roll',150,'nonveg'), D('Creamy Chicken Roll',170,'nonveg',{bestseller:true}), D('Chicken Garlic Egg Roll',170,'nonveg'), D('Crispy Spicy Chicken Roll',170,'nonveg'), D('Non-Veg Combo Roll',170,'nonveg')]
+    }
+  };
+
+  const COMBOS = [
+    {badge:'Best Value', name:'Garlic Chicken + Fried Rice / Noodles', items:['Garlic Chicken','Fried Rice or Noodles'], price:190},
+    {badge:'Popular', name:'Chilli Chicken + Hakka Noodles', items:['Chilli Chicken','Hakka Noodles'], price:190},
+    {badge:'Chef Pick', name:'Chicken Manchurian + Garlic Rice', items:['Chicken Manchurian','Garlic Rice'], price:190},
+    {badge:'Veg Special', name:'Veg. Manchurian + Fried Rice / Noodles', items:['Veg Manchurian','Fried Rice or Noodles'], price:160},
+    {badge:'Veg Special', name:'Chilli Paneer + Fried Rice / Noodles', items:['Chilli Paneer','Fried Rice or Noodles'], price:160},
+    {badge:'Veg Special', name:'Veg. Manchurian + Garlic Rice', items:['Veg Manchurian','Garlic Rice'], price:160},
+  ];
+
+  const CAT_ICON = Object.fromEntries(CATS.map(c=>[c.id,c.icon]));
+
+  // Keyword -> Material Symbols icon resolver, first match wins
+  function getDishIcon(name, catId){
+    const n = name.toLowerCase();
+    if(n.includes('fish')) return 'set_meal';
+    if(n.includes('chicken')) return 'kebab_dining';
+    if(n.includes('egg')) return 'egg_alt';
+    if(n.includes('paneer')) return 'brunch_dining';
+    if(n.includes('soya chaap') || n.includes('chaap')) return 'kebab_dining';
+    if(n.includes('kebab')) return 'kebab_dining';
+    if(n.includes('potato')) return 'nutrition';
+    if(n.includes('gobhi') || n.includes('cauliflower')) return 'nutrition';
+    if(n.includes('corn')) return 'nutrition';
+    if(n.includes('manchurian')) return 'ramen_dining';
+    if(n.includes('momo')) return 'dinner_dining';
+    if(n.includes('soup')) return 'soup_kitchen';
+    if(n.includes('rice') || n.includes('biryani')) return 'rice_bowl';
+    if(n.includes('noodle') || n.includes('hakka') || n.includes('singap')) return 'ramen_dining';
+    if(n.includes('roll')) return 'kebab_dining';
+    if(n.includes('burger')) return 'lunch_dining';
+    if(n.includes('chopsuey')) return 'takeout_dining';
+    if(n.includes('gravy') || n.includes('sauce')) return 'dinner_dining';
+    if(n.includes('spring roll') || n.includes('french fr')) return 'fastfood';
+    if(n.includes('mix veg')) return 'nutrition';
+    return CAT_ICON[catId] || 'restaurant';
+  }
+
+  function iconSpan(name, catId){
+    return `<span class="material-symbols-outlined icon">${getDishIcon(name, catId)}</span>`;
+  }
+
+  // ---------------- RENDER ----------------
+  const catNav = document.getElementById('catNav');
+  const menuSections = document.getElementById('menuSections');
+  const bsRail = document.getElementById('bsRail');
+  const comboRail = document.getElementById('comboRail');
+
+  catNav.innerHTML = CATS.map(c => `<div class="cat-chip" data-cat="${c.id}"><span class="material-symbols-outlined icon">${c.icon}</span><span class="lbl">${c.label}</span></div>`).join('');
+
+  function priceHTML(d){
+    if(d.price1 !== undefined){
+      const p1 = d.price1 ? `₹${d.price1}` : '—';
+      return `<div class="dish-price dual">
+        <div class="price-row"><span class="price-label">${d.labels[0]}</span><span class="price-val">${p1}</span></div>
+        <div class="price-row"><span class="price-label">${d.labels[1]}</span><span class="price-val">₹${d.price2}</span></div>
+      </div>`;
+    }
+    return `<div class="dish-price">₹${d.price}</div>`;
+  }
+
+  function compactPrice(d){
+    return d.price1 !== undefined ? `₹${d.price1} / ₹${d.price2}` : `₹${d.price}`;
+  }
+
+  function dishCardHTML(d, catId){
+    const dietDot = d.diet === 'veg' ? '<span class="veg-dot"></span>' : '<span class="nonveg-dot"></span>';
+    const thumbBorder = d.diet === 'veg' ? 'veg-border' : 'nonveg-border';
+    let badges = '';
+    if(d.bestseller) badges += `<span class="badge bestseller">🔥 Best Seller</span>`;
+    if(d.spicy) badges += `<span class="badge spicy">🌶 Spicy</span>`;
+    if(d.chef) badges += `<span class="badge chef">👨‍🍳 Chef Spl.</span>`;
+    if(d.new) badges += `<span class="badge new">✨ New</span>`;
+    return `<div class="dish-card" data-name="${d.name.toLowerCase()}" data-diet="${d.diet}" data-best="${d.bestseller?1:0}" data-cat="${catId}">
+      <div class="dish-thumb ${thumbBorder}">${iconSpan(d.name, catId)}</div>
+      <div class="dish-info">
+        <div class="top-line">${dietDot}<span class="dish-name">${d.name}</span></div>
+        ${badges ? `<div class="top-line" style="margin-top:4px;">${badges}</div>` : ''}
+      </div>
+      ${priceHTML(d)}
+    </div>`;
+  }
+
+  function groupHTML(list, catId, label, cls){
+    if(!list || !list.length) return '';
+    return `<div class="veg-group-label ${cls}"><span class="dot"></span>${label}</div><div class="dish-grid">${list.map(d=>dishCardHTML(d,catId)).join('')}</div>`;
+  }
+
+  menuSections.innerHTML = CATS.map(c => {
+    const data = MENU[c.id] || {};
+    return `<section class="section" id="cat-${c.id}">
+      <div class="section-head"><h3><span class="plaque-tag"><span class="material-symbols-outlined icon">${c.icon}</span>${c.label}</span></h3></div>
+      ${groupHTML(data.veg, c.id, 'Veg', '')}
+      ${groupHTML(data.nonveg, c.id, 'Non-Veg', 'non')}
+    </section>`;
+  }).join('');
+
+  // Best sellers rail
+  let bestsellers = [];
+  CATS.forEach(c => {
+    const data = MENU[c.id] || {};
+    ['veg','nonveg'].forEach(k => (data[k]||[]).forEach(d => { if(d.bestseller) bestsellers.push(Object.assign({}, d, {cat:c.id})); }));
+  });
+  // Real dish photos for Best Sellers (add more filenames here as photos come in)
+  const BS_IMAGES = {
+    'CFC Chicken Burger': 'assets/cfc-chicken-burger.jpg',
+    'CFC Crispy Chicken (Hot Garlic & Thousand Island Sauce)': 'assets/cfc-crispy-chicken.jpg',
+    'Chicken Crispy Momos': 'assets/chicken-crispy-momos.jpg',
+    'Chicken Fried Rice': 'assets/chicken-fried-rice.jpg',
+    'Chicken Momos': 'assets/chicken-momos.jpg',
+    'Chicken Noodles': 'assets/chicken-noodles.jpg',
+    'Chilli Chicken Dry': 'assets/chilli-chicken-dry.jpg',
+    'Chilli Chicken Gravy': 'assets/chilli-chicken-gravy.jpg',
+    'Creamy Chicken Roll': 'assets/creamy-chicken-roll.jpg',
+  };
+
+  bsRail.innerHTML = bestsellers.map(d => {
+    const img = BS_IMAGES[d.name];
+    if(img){
+      return `<div class="bs-card has-photo">
+        <div class="bs-photo-wrap">
+          <img class="bs-photo" src="${img}" alt="${d.name}" loading="lazy">
+          <span class="fire-tag onphoto">🔥 TRENDING</span>
+        </div>
+        <div class="bs-body">
+          <div class="bs-name">${d.name}</div>
+          <div class="bs-price">${compactPrice(d)}</div>
+        </div>
+      </div>`;
+    }
+    return `<div class="bs-card">
+      <div class="fire-tag">🔥 TRENDING</div>
+      <div class="bs-icon">${iconSpan(d.name, d.cat)}</div>
+      <div class="bs-name">${d.name}</div>
+      <div class="bs-price">${compactPrice(d)}</div>
+    </div>`;
+  }).join('');
+
+  // Combo rail
+  comboRail.innerHTML = COMBOS.map(c => `<div class="combo-card">
+    <span class="combo-badge">${c.badge}</span>
+    <h4>${c.name}</h4>
+    <ul class="combo-items">${c.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+    <div class="combo-price-row"><span class="combo-price">₹${c.price}</span><span class="combo-save">complete meal</span></div>
+  </div>`).join('');
+
+  // ---------------- Category nav active + scroll ----------------
+  const catChips = Array.from(document.querySelectorAll('.cat-chip'));
+  catChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const target = document.getElementById('cat-' + chip.dataset.cat);
+      if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+
+  const catSections = CATS.map(c => document.getElementById('cat-' + c.id)).filter(Boolean);
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const id = entry.target.id.replace('cat-','');
+        catChips.forEach(ch => ch.classList.toggle('active', ch.dataset.cat === id));
+      }
+    });
+  }, {rootMargin:'-120px 0px -70% 0px', threshold:0});
+  catSections.forEach(sec => navObserver.observe(sec));
+
+  // ---------------- Search + Filter ----------------
+  const searchInput = document.getElementById('searchInput');
+  const searchClear = document.getElementById('searchClear');
+  const searchMeta = document.getElementById('searchMeta');
+  const noResult = document.getElementById('noResult');
+  const allCards = () => Array.from(document.querySelectorAll('.dish-card'));
+  const dietChips = Array.from(document.querySelectorAll('.chip[data-diet]'));
+  let activeDiet = 'all';
+
+  function applyFilters(){
+    const q = searchInput.value.trim().toLowerCase();
+    searchClear.classList.toggle('show', q.length > 0);
+    let visibleCount = 0;
+    const sectionsVisible = {};
+
+    allCards().forEach(card => {
+      const matchesText = !q || card.dataset.name.includes(q);
+      const matchesDiet = activeDiet === 'all' || (activeDiet === 'bestseller' ? card.dataset.best === '1' : card.dataset.diet === activeDiet);
+      const show = matchesText && matchesDiet;
+      card.style.display = show ? 'flex' : 'none';
+      if(show){ visibleCount++; sectionsVisible[card.dataset.cat] = true; }
+    });
+
+    // toggle group labels / sections visibility
+    document.querySelectorAll('#menuSections .section').forEach(sec => {
+      const catId = sec.id.replace('cat-','');
+      sec.style.display = sectionsVisible[catId] ? '' : 'none';
+    });
+    document.querySelectorAll('.veg-group-label').forEach(label => {
+      const grid = label.nextElementSibling;
+      const anyVisible = grid && Array.from(grid.children).some(c => c.style.display !== 'none');
+      label.style.display = anyVisible ? 'flex' : 'none';
+      if(grid) grid.style.display = anyVisible ? 'grid' : 'none';
+    });
+
+    if(q || activeDiet !== 'all'){
+      searchMeta.textContent = visibleCount + ' dish' + (visibleCount===1?'':'es') + ' found';
+      searchMeta.classList.add('show');
+    } else {
+      searchMeta.classList.remove('show');
+    }
+
+    noResult.classList.toggle('show', visibleCount === 0);
+    document.getElementById('bestsellers').style.display = (q || activeDiet==='veg' || activeDiet==='nonveg') ? 'none' : '';
+    document.getElementById('combos').style.display = (q || activeDiet!=='all') ? 'none' : '';
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+  searchClear.addEventListener('click', () => { searchInput.value=''; applyFilters(); searchInput.focus(); });
+  dietChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      dietChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeDiet = chip.dataset.diet;
+      applyFilters();
+    });
+  });
+  document.getElementById('searchJump').addEventListener('click', () => {
+    document.querySelector('.search-wrap').scrollIntoView({behavior:'smooth', block:'center'});
+    searchInput.focus();
+  });
+
+  // ---------------- Theme toggle ----------------
+  const themeToggle = document.getElementById('themeToggle');
+  themeToggle.addEventListener('click', () => {
+    const body = document.body;
+    const next = body.dataset.theme === 'dark' ? 'light' : 'dark';
+    body.dataset.theme = next;
+  });
+
+  // ---------------- FAB ----------------
+  const fabToggle = document.getElementById('fabToggle');
+  const fabMenu = document.getElementById('fabMenu');
+  fabToggle.addEventListener('click', () => fabMenu.classList.toggle('open'));
+
+  // ---------------- Back to top + scroll effects ----------------
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    backTop.classList.toggle('show', window.scrollY > 500);
+  });
+  backTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+  // ---------------- Popup (once) ----------------
+  const popupOverlay = document.getElementById('popupOverlay');
+  const popupClose = document.getElementById('popupClose');
+  const popupCta = document.getElementById('popupCta');
+  function closePopup(){ popupOverlay.classList.remove('show'); }
+  popupClose.addEventListener('click', closePopup);
+  popupCta.addEventListener('click', closePopup);
+  popupOverlay.addEventListener('click', (e) => { if(e.target === popupOverlay) closePopup(); });
+  setTimeout(() => { popupOverlay.classList.add('show'); }, 1600);
+
+  // ---------------- Add to Home Screen ----------------
+  (function(){
+    const banner = document.getElementById('installBanner');
+    const cta = document.getElementById('installCta');
+    const dismiss = document.getElementById('installDismiss');
+    const subtext = document.getElementById('installSubtext');
+    const DISMISS_KEY = 'tot_install_dismissed_v1';
+
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const alreadyDismissed = localStorage.getItem(DISMISS_KEY) === '1';
+
+    let deferredPrompt = null;
+
+    function showBanner(){
+      if(isStandalone || alreadyDismissed) return;
+      banner.classList.add('show');
+    }
+    function hideBanner(){
+      banner.classList.remove('show');
+      localStorage.setItem(DISMISS_KEY, '1');
+    }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      subtext.textContent = 'Add it to your home screen and open it like an app.';
+      cta.textContent = 'Add';
+      showBanner();
+    });
+
+    cta.addEventListener('click', async () => {
+      if(deferredPrompt){
+        deferredPrompt.prompt();
+        const choice = await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        hideBanner();
+      } else if(isIOS){
+        subtext.textContent = 'Tap the Share icon, then "Add to Home Screen".';
+        cta.style.display = 'none';
+      } else {
+        // Fallback: share the link via WhatsApp so it's saved in chat for next time
+        const url = window.location.href;
+        window.open('https://wa.me/?text=' + encodeURIComponent('Touch of Taste menu: ' + url), '_blank');
+        hideBanner();
+      }
+    });
+
+    dismiss.addEventListener('click', hideBanner);
+
+    if(isIOS && !isStandalone && !alreadyDismissed){
+      subtext.textContent = 'Tap the Share icon, then "Add to Home Screen".';
+      cta.textContent = 'How?';
+      setTimeout(showBanner, 2000);
+    }
+  })();
+
+  // ---------------- Service worker (offline-ready) ----------------
+  if('serviceWorker' in navigator){
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
+  }
+
+  // ---------------- Loader ----------------
+  window.addEventListener('load', () => {
+    setTimeout(() => document.getElementById('loader').classList.add('hide'), 350);
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
