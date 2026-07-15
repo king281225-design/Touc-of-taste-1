@@ -70,7 +70,7 @@
     --header-bg: rgba(6,46,43,.86);
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;overflow-x:hidden;}
+  html{scroll-behavior:smooth;}
   .material-symbols-outlined{
     font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24;
     font-size:1.15em;line-height:1;display:inline-block;vertical-align:middle;
@@ -83,12 +83,10 @@
     -webkit-font-smoothing:antialiased;
     transition:background .35s ease, color .35s ease;
     padding-bottom:88px;
-    overflow-x:hidden;
-    width:100%;
   }
   img{max-width:100%;display:block;}
   a{color:inherit;text-decoration:none;}
-  .container{max-width:760px;margin:0 auto;padding:0 18px;width:100%;box-sizing:border-box;}
+  .container{max-width:760px;margin:0 auto;padding:0 18px;}
 
   /* ---------- Loading screen ---------- */
   #loader{
@@ -112,10 +110,10 @@
   }
   .header-row{display:flex;align-items:center;gap:12px;padding:10px 0;}
   .brand{display:flex;align-items:center;gap:10px;flex:1;min-width:0;}
-  .brand-badge{width:46px;height:46px;flex:none;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:visible;}
-  .brand-badge img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 3px 8px rgba(0,0,0,.28));}
-  .brand-text{min-width:0;overflow:hidden;}
-  .brand-text .name{font-family:var(--script);font-weight:800;letter-spacing:.005em;font-size:clamp(1.3rem,6vw,1.85rem);line-height:1;color:var(--text-main);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;}
+  .brand-badge{width:42px;height:42px;flex:none;border-radius:50%;background:linear-gradient(155deg,var(--teal-600),var(--teal-800));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.25);}
+  .brand-badge svg{width:24px;height:24px;}
+  .brand-text{min-width:0;}
+  .brand-text .name{font-family:var(--script);font-weight:800;letter-spacing:.005em;font-size:1.85rem;line-height:1;color:var(--text-main);white-space:nowrap;}
   .brand-text .tag{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-sub);display:block;margin-top:2px;}
   .header-actions{display:flex;align-items:center;gap:4px;}
   .icon-btn{width:38px;height:38px;border-radius:12px;border:1px solid rgba(4,127,122,.28);background:rgba(4,127,122,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--teal-700);transition:background .15s,color .15s;}
@@ -150,8 +148,8 @@
   }
   .hero .container{position:relative;z-index:2;}
   .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft);border:1px solid rgba(201,168,74,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;}
-  .hero h1{font-family:var(--script);font-weight:800;letter-spacing:.005em;font-size:clamp(2.4rem,10vw,3.6rem);line-height:1;margin:0 0 6px;color:#fff;}
-  .hero h2{font-family:var(--serif);font-weight:500;font-style:italic;font-size:clamp(1rem,4vw,1.2rem);margin:0 0 16px;color:var(--gold-soft);}
+  .hero h1{font-family:var(--script);font-weight:800;letter-spacing:.005em;font-size:3.6rem;line-height:.98;margin:0 0 6px;color:#fff;}
+  .hero h2{font-family:var(--serif);font-weight:500;font-style:italic;font-size:1.2rem;margin:0 0 16px;color:var(--gold-soft);}
   .hero p.desc{max-width:38ch;color:#cfe4de;font-size:.95rem;line-height:1.55;margin:0 0 26px;}
   .hero-actions{display:flex;flex-wrap:wrap;gap:10px;}
   .btn{
@@ -171,16 +169,16 @@
   @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
 
   /* ---------- Search ---------- */
-  .search-wrap{margin-top:-22px;position:relative;z-index:5;}
+  .search-wrap{margin-top:-26px;position:relative;z-index:5;}
   .search-box{
     background:var(--card-surface);border:1px solid var(--card-border);border-radius:20px;
-    box-shadow:var(--shadow-lg);padding:6px 8px 6px 16px;display:flex;align-items:center;gap:8px;width:100%;box-sizing:border-box;
+    box-shadow:var(--shadow-lg);padding:6px 8px 6px 18px;display:flex;align-items:center;gap:10px;
   }
   .search-box svg{width:18px;height:18px;color:var(--text-sub);flex:none;}
   .search-box input{
-    flex:1;min-width:0;border:none;outline:none;background:transparent;color:var(--text-main);font-family:var(--sans);font-size:16px;padding:12px 0;
+    flex:1;border:none;outline:none;background:transparent;color:var(--text-main);font-family:var(--sans);font-size:.95rem;padding:12px 0;
   }
-  .search-box input::placeholder{color:var(--text-sub);font-size:.88rem;}
+  .search-box input::placeholder{color:var(--text-sub);}
   .search-clear{width:30px;height:30px;border-radius:50%;border:none;background:var(--bg-section-alt);color:var(--text-sub);display:none;align-items:center;justify-content:center;cursor:pointer;flex:none;}
   .search-clear.show{display:flex;}
   .search-meta{padding:10px 4px 0;font-size:.78rem;color:var(--text-sub);display:none;}
@@ -313,7 +311,6 @@
   .fab.whatsapp{background:#25D366;}
   .fab.call{background:var(--teal-600);}
   .fab.map{background:var(--gold);color:#221a08;}
-  .fab.review{background:#fff;border:1px solid #e3e3e3;}
   .fab-main{width:58px;height:58px;background:linear-gradient(135deg,var(--teal-500),var(--teal-800));}
   .fab-menu{display:flex;flex-direction:column;gap:10px;align-items:flex-end;opacity:0;pointer-events:none;transform:translateY(10px);transition:.25s ease;}
   .fab-menu.open{opacity:1;pointer-events:auto;transform:translateY(0);}
@@ -326,7 +323,6 @@
   /* ---------- Footer ---------- */
   footer{background:var(--teal-950);color:#dfeeea;margin-top:50px;padding:44px 0 30px;}
   .footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
-  .footer-brand .brand-badge{width:58px;height:58px;}
   .footer-brand .name{font-family:var(--script);font-weight:700;letter-spacing:.01em;font-size:2rem;color:#fff;}
   footer .addr{font-size:.85rem;color:#a9c4bd;line-height:1.7;margin-bottom:18px;}
   .footer-links{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;}
@@ -371,13 +367,16 @@
   <div class="container header-row">
     <div class="brand">
       <div class="brand-badge">
-        <img src="assets/logo-touch-of-taste.png" alt="Touch of Taste logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M6 9c0-3 2-5 2-5s-1 3 1 4c1-2 3-3 3-3s-.5 2 .5 3c1.5-.5 2.5-2 2.5-2s0 2.5-1.5 4c1 .5 1.5 1.5 1.5 3H6c0-1.5.6-2.7 1.6-3.3C6.6 9.4 6 8.3 6 7Z"/><path d="M6 12h12v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7Z"/></svg>
       </div>
       <div class="brand-text">
         <span class="name">Touch of Taste</span>
       </div>
     </div>
     <div class="header-actions">
+      <button class="icon-btn" id="searchJump" aria-label="Search menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
       <a class="icon-btn" href="https://www.instagram.com/touch_of_taste1/" target="_blank" rel="noopener" aria-label="Instagram @touch_of_taste1">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
       </a>
@@ -421,7 +420,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.5 2.1L8 10.1a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c1 .4 2 .6 3 .7a2 2 0 0 1 1.6 2Z"/></svg>
         Call Now
       </a>
-      <a class="btn btn-outline" href="https://maps.app.goo.gl/6fzXwMrc66cjaXYG8" target="_blank" rel="noopener">
+      <a class="btn btn-outline" href="https://www.google.com/maps/dir/?api=1&destination=28.6249771,77.0967709" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
         Directions
       </a>
@@ -499,7 +498,7 @@
   <div class="container">
     <div class="footer-brand">
       <div class="brand-badge">
-        <img src="assets/logo-touch-of-taste.png" alt="Touch of Taste logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M6 9c0-3 2-5 2-5s-1 3 1 4c1-2 3-3 3-3s-.5 2 .5 3c1.5-.5 2.5-2 2.5-2s0 2.5-1.5 4c1 .5 1.5 1.5 1.5 3H6c0-1.5.6-2.7 1.6-3.3C6.6 9.4 6 8.3 6 7Z"/><path d="M6 12h12v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7Z"/></svg>
       </div>
       <span class="name">Touch of Taste</span>
     </div>
@@ -514,8 +513,10 @@
     <div class="footer-links">
       <a href="https://wa.me/919810301182" target="_blank" rel="noopener">WhatsApp</a>
       <a href="tel:9212157779">Call</a>
-      <a href="https://maps.app.goo.gl/6fzXwMrc66cjaXYG8" target="_blank" rel="noopener">Google Maps</a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=28.6249771,77.0967709" target="_blank" rel="noopener">Google Maps</a>
       <a href="https://www.instagram.com/touch_of_taste1/" target="_blank" rel="noopener">@touch_of_taste1</a>
+      <a href="https://link.zomato.com/xqzv/rshare?id=6158270630563407&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener">Zomato</a>
+      <a href="#" target="_blank" rel="noopener">Swiggy</a>
     </div>
     <p class="fine">© <span id="year"></span> Touch of Taste Take Away. All rights reserved. · Menu digitised for QR ordering.</p>
   </div>
@@ -528,7 +529,7 @@
 
 <div class="fab-stack">
   <div class="fab-menu" id="fabMenu">
-    <a class="fab map" href="https://maps.app.goo.gl/6fzXwMrc66cjaXYG8" target="_blank" rel="noopener" aria-label="Map">
+    <a class="fab map" href="https://www.google.com/maps/dir/?api=1&destination=28.6249771,77.0967709" target="_blank" rel="noopener" aria-label="Map">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
     </a>
     <a class="fab call" href="tel:9212157779" aria-label="Call">
@@ -536,9 +537,6 @@
     </a>
     <a class="fab whatsapp" href="https://wa.me/919810301182?text=Hi%20Touch%20of%20Taste%2C%20I%27d%20like%20to%20order" target="_blank" rel="noopener" aria-label="WhatsApp">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.6-1.4-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.2-1 1-1 2.3s1 2.7 1.2 2.9c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.5-.3Z"/></svg>
-    </a>
-    <a class="fab review" href="https://maps.app.goo.gl/aD25Fq9SnAvovEsdA" target="_blank" rel="noopener" aria-label="Rate us on Google">
-      <svg viewBox="0 0 48 48" width="24" height="24"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.6 32.9 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.6 15.9 18.9 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4c-7.6 0-14.1 4.3-17.7 10.7z"/><path fill="#4CAF50" d="M24 44c5.5 0 10.4-1.9 14.3-5.1l-6.6-5.6C29.6 34.9 26.9 36 24 36c-5.2 0-9.6-3.1-11.3-7.6l-6.6 5.1C9.8 39.6 16.4 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.2 5.6l6.6 5.6C41.4 36.3 44 30.6 44 24c0-1.3-.1-2.7-.4-3.5z"/></svg>
     </a>
   </div>
   <button class="fab fab-main" id="fabToggle" aria-label="Quick actions">
@@ -563,7 +561,7 @@
   const CATS = [
     {id:'momos', label:'Momos', icon:'ramen_dining'},
     {id:'starters', label:'Starters', icon:'local_fire_department'},
-    {id:'fish', label:'Fish', icon:'set_meal'},
+    {id:'fish', label:'Fish (Winter Special)', icon:'set_meal'},
     {id:'soup', label:'Soup', icon:'soup_kitchen'},
     {id:'fried', label:'Fried & Crunchy', icon:'fastfood'},
     {id:'burger', label:'Burger', icon:'lunch_dining'},
@@ -584,7 +582,7 @@
         D2('Paneer Momos',90,100,'veg',{},['Steam','Fried']),
         D('Paneer Crispy Momos',130,'veg'),
         D('Chilli Garlic Paneer Momos',150,'veg'),
-        D('Paneer Malai Momos',100,'veg'),
+        D('Paneer Malai Momos',150,'veg'),
         D('Pan Fried Paneer Momos',140,'veg')
       ],
       nonveg: [
@@ -621,7 +619,7 @@
         D2('Creamy Chicken Dry',160,260,'nonveg'),
         D('Chef Spl. Chicken',250,'nonveg',{chef:true}),
         D2('Ginger Garlic Chicken',160,260,'nonveg'),
-        D('Steam Chicken (GYM Spl.)',300,'nonveg')
+        D('Veg. Steam Chicken Special',300,'nonveg')
       ]
     },
     fish: {
@@ -637,6 +635,7 @@
         D2('French Fries',50,90,'veg'),
         D2('Crispy Soya Chaap',100,180,'veg'),
         D2('Crispy Paneer Bite with Thousand Island Sauce',130,240,'veg'),
+        D2('Paneer Popcorn with Garlic Sauce',130,240,'veg'),
         D('Crispy Kebab with Hot Garlic Sauce',220,'veg')
       ],
       nonveg: [
@@ -647,7 +646,7 @@
     },
     burger: {
       veg: [D('Veg Burger',60,'veg'), D('Crispy Paneer Burger',90,'veg')],
-      nonveg: [D('Chicken Burger',100,'nonveg'), D('Loaded Chicken Burger',100,'nonveg'), D('CFC Chicken Burger',100,'nonveg',{bestseller:true})]
+      nonveg: [D('Chicken Burger',100,'nonveg'), D('Loaded Chicken Burger',100,'nonveg'), D('Loaded Chicken Burger',100,'nonveg',{bestseller:true})]
     },
     rice: {
       veg: [
@@ -661,8 +660,8 @@
       nonveg: [
         D2('Egg Fried Rice',90,140,'nonveg'),
         D2('Chicken Fried Rice',100,160,'nonveg',{bestseller:true}),
-        D2('Chicken Singapore Fried Rice',100,160,'nonveg'),
-        D2('Chilli Chicken Garlic Fried Rice',100,160,'nonveg'),
+        D2('Chicken Singapore Fried Rice',110,170,'nonveg'),
+        D2('Chilli Chicken Garlic Fried Rice',110,170,'nonveg'),
         D2('Chicken Egg Fried Rice',120,200,'nonveg')
       ]
     },
@@ -671,11 +670,11 @@
         D2('Veg Noodles',50,90,'veg'),
         D2('Singapore Noodles',90,140,'veg'),
         D2('Chilli Garlic Noodles',60,100,'veg'),
-        D2('Veg Hakka Noodles',90,140,'veg'),
+        D2('Veg Hakka Noodles',100,150,'veg'),
         D2('Veg Paneer Noodles',100,150,'veg')
       ],
       nonveg: [
-        D2('Chicken Egg Noodles',90,140,'nonveg'),
+        D2('Chicken Egg Noodles',120,190,'nonveg'),
         D2('Chicken Noodles',100,150,'nonveg',{bestseller:true}),
         D2('Chicken Singapore Noodles',110,160,'nonveg'),
         D2('Garlic Chicken Noodles',110,160,'nonveg'),
@@ -711,9 +710,9 @@
         D('Veg. Manchurian Roll',140,'veg'),
         D('Crispy CFC Paneer Roll',150,'veg',{new:true}),
         D('Classic Paneer Roll',150,'veg',{new:true}),
-        D('Veg Combo Roll',150,'veg')
+        D('Veg. Mexican Roll',150,'veg')
       ],
-      nonveg: [D('Egg Roll Masala',110,'nonveg'), D('Chicken Manchurian Roll',150,'nonveg'), D('Chilli Chicken Roll',150,'nonveg'), D("Chicken Hot 'N' Spicy Roll",150,'nonveg'), D('Chicken Seek Kebab Roll',150,'nonveg'), D('Creamy Chicken Roll',170,'nonveg',{bestseller:true}), D('Chicken Garlic Egg Roll',170,'nonveg'), D('Crispy Spicy Chicken Roll',170,'nonveg'), D('Non-Veg Combo Roll',170,'nonveg')]
+      nonveg: [D('Egg Roll Masala',110,'nonveg'), D('Chicken Manchurian Roll',150,'nonveg'), D('Chilli Chicken Roll',150,'nonveg'), D("Chicken Hot 'N' Spicy Roll",150,'nonveg'), D('Chicken Seek Kebab Roll',150,'nonveg'), D('Creamy Chicken Roll',170,'nonveg',{bestseller:true}), D('Chicken Garlic Egg Roll',170,'nonveg'), D('Crispy Spicy Chicken Roll',170,'nonveg')]
     }
   };
 
@@ -814,14 +813,16 @@
   }).join('');
 
   // Best sellers rail
+  // Custom order: Rolls, Burgers, Chicken Items (starters/fried/rice/noodles/gravy), Momos last
+  const BS_ORDER = ['rolls','burger','starters','fried','rice','noodles','gravy','soup','chopsuey','momos'];
   let bestsellers = [];
-  CATS.forEach(c => {
-    const data = MENU[c.id] || {};
-    ['veg','nonveg'].forEach(k => (data[k]||[]).forEach(d => { if(d.bestseller) bestsellers.push(Object.assign({}, d, {cat:c.id})); }));
+  BS_ORDER.forEach(catId => {
+    const data = MENU[catId] || {};
+    ['veg','nonveg'].forEach(k => (data[k]||[]).forEach(d => { if(d.bestseller) bestsellers.push(Object.assign({}, d, {cat:catId})); }));
   });
   // Real dish photos for Best Sellers (add more filenames here as photos come in)
   const BS_IMAGES = {
-    'CFC Chicken Burger': 'assets/cfc-chicken-burger.jpg',
+    'Loaded Chicken Burger': 'assets/cfc-chicken-burger.jpg',
     'CFC Crispy Chicken (Hot Garlic & Thousand Island Sauce)': 'assets/cfc-crispy-chicken.jpg',
     'Chicken Crispy Momos': 'assets/chicken-crispy-momos.jpg',
     'Chicken Fried Rice': 'assets/chicken-fried-rice.jpg',
@@ -938,6 +939,10 @@
       activeDiet = chip.dataset.diet;
       applyFilters();
     });
+  });
+  document.getElementById('searchJump').addEventListener('click', () => {
+    document.querySelector('.search-wrap').scrollIntoView({behavior:'smooth', block:'center'});
+    searchInput.focus();
   });
 
   // ---------------- Theme toggle ----------------
