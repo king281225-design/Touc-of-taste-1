@@ -170,23 +170,10 @@
   .scroll-cue .arrow{animation:bob 1.6s ease-in-out infinite;}
   @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
 
-  /* ---------- Search ---------- */
-  .search-wrap{margin-top:-26px;position:relative;z-index:5;}
-  .search-box{
-    background:var(--card-surface);border:1px solid var(--card-border);border-radius:20px;
-    box-shadow:var(--shadow-lg);padding:6px 8px 6px 18px;display:flex;align-items:center;gap:10px;
-    transition:border-color .3s ease,box-shadow .3s ease;
-  }
-  .search-box:focus-within{border-color:var(--gold-soft);box-shadow:var(--shadow-lg),0 0 0 3px rgba(232,201,106,.18);}
-  .search-box svg{width:18px;height:18px;color:var(--text-sub);flex:none;}
-  .search-box input{
-    flex:1;border:none;outline:none;background:transparent;color:var(--text-main);font-family:var(--sans);font-size:.95rem;padding:12px 0;
-  }
-  .search-box input::placeholder{color:var(--text-sub);}
-  .search-clear{width:30px;height:30px;border-radius:50%;border:none;background:var(--bg-section-alt);color:var(--text-sub);display:none;align-items:center;justify-content:center;cursor:pointer;flex:none;}
-  .search-clear.show{display:flex;}
-  .search-meta{padding:10px 4px 0;font-size:.78rem;color:var(--text-sub);display:none;}
-  .search-meta.show{display:block;}
+  /* ---------- Filters wrap ---------- */
+  .search-wrap{margin-top:28px;position:relative;z-index:5;}
+  .search-meta{padding:0 4px 0;font-size:.78rem;color:var(--text-sub);display:none;}
+  .search-meta.show{display:block;margin-bottom:6px;}
 
   /* ---------- Filters row ---------- */
   .filter-row{display:flex;gap:8px;padding:14px 0 4px;overflow-x:auto;scrollbar-width:none;}
@@ -393,9 +380,6 @@
       </div>
     </div>
     <div class="header-actions">
-      <button class="icon-btn" id="searchJump" aria-label="Search menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-      </button>
       <a class="icon-btn" href="https://www.instagram.com/touch_of_taste1/" target="_blank" rel="noopener" aria-label="Instagram @touch_of_taste1">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
       </a>
@@ -448,13 +432,8 @@
   </div>
 </section>
 
-<!-- Search -->
+<!-- Filters -->
 <div class="container search-wrap">
-  <div class="search-box">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-    <input type="text" id="searchInput" placeholder="Search dishes — momos, rice, roll, chicken…">
-    <button class="search-clear" id="searchClear" aria-label="Clear search">✕</button>
-  </div>
   <p class="search-meta" id="searchMeta"></p>
   <div class="filter-row">
     <div class="chip active" data-diet="all">All</div>
@@ -531,7 +510,7 @@
   <!-- No results -->
   <div class="no-result" id="noResult">
     <div class="emoji">🍽️</div>
-    <p>No dishes match your search.<br>Try “momos”, “roll”, or “chicken”.</p>
+    <p>No dishes match this filter.<br>Try “All” to see the full menu.</p>
   </div>
 
 </div>
@@ -929,9 +908,7 @@
   }, {rootMargin:'-120px 0px -70% 0px', threshold:0});
   catSections.forEach(sec => navObserver.observe(sec));
 
-  // ---------------- Search + Filter ----------------
-  const searchInput = document.getElementById('searchInput');
-  const searchClear = document.getElementById('searchClear');
+  // ---------------- Filter (Veg / Non-Veg / Best Seller) ----------------
   const searchMeta = document.getElementById('searchMeta');
   const noResult = document.getElementById('noResult');
   const allCards = () => Array.from(document.querySelectorAll('.dish-card'));
@@ -939,15 +916,12 @@
   let activeDiet = 'all';
 
   function applyFilters(){
-    const q = searchInput.value.trim().toLowerCase();
-    searchClear.classList.toggle('show', q.length > 0);
     let visibleCount = 0;
     const sectionsVisible = {};
 
     allCards().forEach(card => {
-      const matchesText = !q || card.dataset.name.includes(q);
       const matchesDiet = activeDiet === 'all' || (activeDiet === 'bestseller' ? card.dataset.best === '1' : card.dataset.diet === activeDiet);
-      const show = matchesText && matchesDiet;
+      const show = matchesDiet;
       card.style.display = show ? 'flex' : 'none';
       if(show){ visibleCount++; sectionsVisible[card.dataset.cat] = true; }
     });
@@ -964,7 +938,7 @@
       if(grid) grid.style.display = anyVisible ? 'grid' : 'none';
     });
 
-    if(q || activeDiet !== 'all'){
+    if(activeDiet !== 'all'){
       searchMeta.textContent = visibleCount + ' dish' + (visibleCount===1?'':'es') + ' found';
       searchMeta.classList.add('show');
     } else {
@@ -972,12 +946,10 @@
     }
 
     noResult.classList.toggle('show', visibleCount === 0);
-    document.getElementById('bestsellers').style.display = (q || activeDiet==='veg' || activeDiet==='nonveg') ? 'none' : '';
-    document.getElementById('combos').style.display = (q || activeDiet!=='all') ? 'none' : '';
+    document.getElementById('bestsellers').style.display = (activeDiet==='veg' || activeDiet==='nonveg') ? 'none' : '';
+    document.getElementById('combos').style.display = (activeDiet!=='all') ? 'none' : '';
   }
 
-  searchInput.addEventListener('input', applyFilters);
-  searchClear.addEventListener('click', () => { searchInput.value=''; applyFilters(); searchInput.focus(); });
   dietChips.forEach(chip => {
     chip.addEventListener('click', () => {
       dietChips.forEach(c => c.classList.remove('active'));
@@ -985,10 +957,6 @@
       activeDiet = chip.dataset.diet;
       applyFilters();
     });
-  });
-  document.getElementById('searchJump').addEventListener('click', () => {
-    document.querySelector('.search-wrap').scrollIntoView({behavior:'smooth', block:'center'});
-    searchInput.focus();
   });
 
   // ---------------- Theme toggle ----------------
